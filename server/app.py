@@ -5,14 +5,12 @@ from models import db, Restaurant, Pizza, RestaurantPizza
 
 app = Flask(__name__)
 
-# Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize extensions
-db.init_app(app)  # Don't call SQLAlchemy() again—reuse `db` from models
-migrate = Migrate(app, db)  # Set up Flask-Migrate
-api = Api(app)  # Set up Flask-RESTful
+db.init_app(app) 
+migrate = Migrate(app, db) 
+api = Api(app)  
 
 # Routes
 @app.route('/')
